@@ -8,7 +8,6 @@
       "label": "customer"
     }
   ],
-
   "opportunities": [
     {
       "id": "OPP-812",
@@ -21,7 +20,6 @@
       "label": "strategic_enterprise_opportunity"
     }
   ],
-
   "quotes": [
     {
       "id": "QUOTE-812",
@@ -32,7 +30,6 @@
       "label": "globalhotels_commercial_proposal"
     }
   ],
-
   "quote_versions": [
     {
       "id": "QUOTE-V1",
@@ -68,7 +65,6 @@
       "summary": "Final proposal containing a 17 percent discount requiring executive approval."
     }
   ],
-
   "discount_requests": [
     {
       "id": "DISCOUNT-17",
@@ -85,20 +81,117 @@
       "summary": "Formal request for approval of the 17 percent discount in Quote v3."
     }
   ],
-
   "approvals": [],
-
-  "calls": [],
-  "transcripts": [],
-
-  "email_threads": [],
-  "email_messages": [],
-
+  "calls": [
+    {
+      "id": "CALL-20",
+      "type": "call",
+      "source_system": "conversation",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "date": "2026-01-20",
+      "label": "discovery_call",
+      "summary": "Discovery discussion covering GlobalHotels conference-room requirements."
+    },
+    {
+      "id": "CALL-44",
+      "type": "call",
+      "source_system": "conversation",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "date": "2026-02-08",
+      "label": "pricing_negotiation",
+      "summary": "Commercial negotiation after Competitor-X entered the opportunity."
+    }
+  ],
+  "transcripts": [
+    {
+      "id": "TRANSCRIPT-20",
+      "type": "transcript",
+      "source_system": "conversation",
+      "call_id": "CALL-20",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "date": "2026-01-20",
+      "label": "customer_requirements",
+      "text": "GlobalHotels expects approximately 300 conference rooms across 40 properties to have consistent AV functionality, centralized manageability, reliable integration, and enterprise support."
+    },
+    {
+      "id": "TRANSCRIPT-44",
+      "type": "transcript",
+      "source_system": "conversation",
+      "call_id": "CALL-44",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "date": "2026-02-08",
+      "label": "competitor_pricing_pressure",
+      "text": "GlobalHotels stated that Competitor-X had presented materially lower pricing and asked Sony to improve its commercial offer."
+    },
+    {
+      "id": "TRANSCRIPT-45",
+      "type": "transcript",
+      "source_system": "conversation",
+      "call_id": "CALL-44",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "date": "2026-02-08",
+      "label": "customer_expectation",
+      "text": "GlobalHotels emphasized that the proposed solution was expected to satisfy the capabilities discussed during the sales process and that any material limitation could affect the commercial negotiation."
+    }
+  ],
+  "email_threads": [
+    {
+      "id": "THREAD-103",
+      "type": "email_thread",
+      "source_system": "email",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "subject": "GlobalHotels commercial proposal",
+      "label": "pricing_negotiation"
+    }
+  ],
+  "email_messages": [
+    {
+      "id": "EMAIL-103",
+      "type": "email_message",
+      "source_system": "email",
+      "thread_id": "THREAD-103",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "date": "2026-02-08",
+      "sender_role": "globalhotels_procurement",
+      "recipient_role": "sony_account_executive",
+      "label": "pricing_request",
+      "text": "Procurement requested materially improved pricing because GlobalHotels was evaluating a lower-priced competing proposal."
+    },
+    {
+      "id": "EMAIL-118",
+      "type": "email_message",
+      "source_system": "email",
+      "thread_id": "THREAD-103",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "date": "2026-02-26",
+      "sender_role": "globalhotels_procurement",
+      "recipient_role": "sony_account_executive",
+      "label": "decision_deadline",
+      "text": "GlobalHotels requested Sony's final revised commercial proposal before the upcoming procurement decision deadline."
+    }
+  ],
   "pricing_policies": [],
   "product_documents": [],
-  "battlecards": [],
+  "battlecards": [
+    {
+      "id": "BATTLECARD-X",
+      "type": "battlecard",
+      "source_system": "knowledge",
+      "competitor": "Competitor-X",
+      "date": "2026-02-02",
+      "label": "competitive_guidance",
+      "text": "Competitor-X frequently competes aggressively on price in large enterprise AV opportunities. Sony guidance emphasizes solution quality, integration, support, and total customer experience rather than matching price alone."
+    }
+  ],
   "playbooks": [],
-
   "support_tickets": [],
   "ticket_events": []
 }
