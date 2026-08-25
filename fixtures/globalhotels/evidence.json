@@ -81,7 +81,23 @@
       "summary": "Formal request for approval of the 17 percent discount in Quote v3."
     }
   ],
-  "approvals": [],
+  "approvals": [
+    {
+      "id": "APPROVAL-88",
+      "type": "approval",
+      "source_system": "cpq",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "discount_request_id": "DISCOUNT-17",
+      "quote_version_id": "QUOTE-V3",
+      "date": "2026-03-05",
+      "approver_role": "vice_president",
+      "decision": "approved",
+      "approved_discount_percent": 17,
+      "label": "executive_discount_exception",
+      "summary": "Vice President approved the 17 percent discount exception for Quote v3."
+    }
+  ],
   "calls": [
     {
       "id": "CALL-20",
@@ -178,8 +194,46 @@
       "text": "GlobalHotels requested Sony's final revised commercial proposal before the upcoming procurement decision deadline."
     }
   ],
-  "pricing_policies": [],
-  "product_documents": [],
+  "pricing_policies": [
+    {
+      "id": "POLICY-V1",
+      "type": "pricing_policy",
+      "source_system": "knowledge",
+      "effective_date": "2026-01-01",
+      "label": "previous_pricing_policy",
+      "text": "The standard enterprise sales discount ceiling is 15 percent without executive exception approval."
+    },
+    {
+      "id": "POLICY-V2",
+      "type": "pricing_policy",
+      "source_system": "knowledge",
+      "effective_date": "2026-02-12",
+      "supersedes": "POLICY-V1",
+      "label": "applicable_pricing_policy",
+      "text": "Discounts above 15 percent require Vice President approval before the commercial offer can be accepted."
+    }
+  ],
+  "product_documents": [
+    {
+      "id": "PROD-DOC-V1",
+      "type": "product_document",
+      "source_system": "knowledge",
+      "date": "2026-02-21",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "label": "capability_unavailable",
+      "text": "Technical validation confirmed that a capability requested by GlobalHotels was not supported by the proposed solution at this time."
+    },
+    {
+      "id": "PROD-DOC-V2",
+      "type": "product_document",
+      "source_system": "knowledge",
+      "date": "2026-07-10",
+      "supersedes": "PROD-DOC-V1",
+      "label": "capability_released",
+      "text": "The capability previously unavailable during the GlobalHotels sales cycle is now supported."
+    }
+  ],
   "battlecards": [
     {
       "id": "BATTLECARD-X",
