@@ -170,3 +170,135 @@ The capability was unavailable.
 The capability exists.
 
 Chronos must prevent the July information from contaminating explanations of February or March decisions.
+
+## Decisions Requiring Cross-System Evidence
+
+### Decision 1 — Why was the 17% discount approved?
+
+This cannot be answered from the quote alone.
+
+Required evidence:
+
+- **CPQ:** Quote v3 contained a 17% discount
+- **CPQ / Pricing:** discounts above 15% required VP approval
+- **Conversation:** customer reported competitive pricing pressure
+- **Email / Procurement:** customer requested improved pricing
+- **CRM:** opportunity was approximately $3.8M and strategically important
+- **Approval:** VP approved the exception
+
+Chronos must combine these facts to explain the commercial reasoning.
+
+---
+
+### Decision 2 — Why was Quote v3 submitted with a larger discount?
+
+Quote v3 was not simply another quote revision.
+
+Required evidence:
+
+- **CPQ:** pricing changes from Quote v1 → v2 → v3
+- **Conversation:** customer objections to pricing
+- **Competitive evidence:** another vendor entered the deal
+- **Email:** procurement pressure and negotiation context
+- **CRM:** risk to the opportunity
+
+Chronos must reconstruct why the commercial position changed over time.
+
+---
+
+### Decision 3 — Why did the VP approve an exception instead of rejecting it?
+
+The approval record only tells us that approval happened.
+
+Required evidence:
+
+- **Pricing policy:** 17% exceeded normal authority
+- **CRM:** deal value and strategic importance
+- **Conversation:** customer willingness to consider competitors
+- **Competitive evidence:** lower competing price
+- **CPQ:** requested discount and quote economics
+- **Approval:** final executive authorization
+
+The reason for the exception exists across several systems.
+
+---
+
+### Decision 4 — What did Sales know when Quote v3 was submitted?
+
+This is a historical-knowledge question.
+
+As of February 28, Sales knew:
+
+- the competitor was active,
+- the customer wanted better pricing,
+- Quote v2 had not resolved the negotiation,
+- the applicable pricing policy required VP approval above 15%,
+- a requested technical capability was currently unavailable.
+
+Sales did **not** know that the unavailable capability would be released on July 10.
+
+Required evidence:
+
+- **Conversation**
+- **Email**
+- **CPQ**
+- **Pricing policy**
+- **Product documentation**
+- **technical validation records**
+
+Chronos must enforce the February 28 historical boundary.
+
+---
+
+### Decision 5 — Did Sales offer something the product could not support?
+
+This cannot be answered from CRM or the quote alone.
+
+Required evidence:
+
+- **Quote / sales commitments:** what was proposed
+- **Discovery call:** customer requirements
+- **Product documentation:** capabilities available at that time
+- **Technical validation:** limitation discovered February 21
+- **Later product documentation:** capability released July 10
+
+Chronos must distinguish:
+
+- capability available at the decision date,
+- capability available only later.
+
+---
+
+### Decision 6 — Why did Sony continue pursuing the deal despite technical and margin risk?
+
+The opportunity contained both commercial and technical risks.
+
+Required evidence:
+
+- **CRM:** strategic $3.8M opportunity
+- **CPQ:** increasing discount pressure
+- **Conversation:** customer requirements
+- **Competitive evidence:** threat of losing the business
+- **Technical evidence:** known product limitation
+- **Approval:** willingness to accept a pricing exception
+- **Outcome:** eventual Closed Won result
+
+The eventual outcome may help evaluate the decision later, but it must not be treated as evidence available when the original decision was made.
+
+## Day 1 Decision Model Summary
+
+The GlobalHotels lifecycle contains at least six decisions that cannot be explained reliably from a single database row or source system.
+
+Chronos therefore needs to reconstruct:
+
+**business facts**
++
+**historically available evidence**
++
+**policy**
++
+**technical knowledge**
++
+**relationships and approvals**
+
+to explain why each decision was made.
