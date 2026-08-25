@@ -118,6 +118,16 @@
       "date": "2026-02-08",
       "label": "pricing_negotiation",
       "summary": "Commercial negotiation after Competitor-X entered the opportunity."
+    },
+    {
+      "id": "CALL-52",
+      "type": "call",
+      "source_system": "conversation",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "date": "2026-02-24",
+      "label": "capability_gap_negotiation",
+      "summary": "Discussion of the newly confirmed product limitation and its commercial impact."
     }
   ],
   "transcripts": [
@@ -153,6 +163,17 @@
       "date": "2026-02-08",
       "label": "customer_expectation",
       "text": "GlobalHotels emphasized that the proposed solution was expected to satisfy the capabilities discussed during the sales process and that any material limitation could affect the commercial negotiation."
+    },
+    {
+      "id": "TRANSCRIPT-52",
+      "type": "transcript",
+      "source_system": "conversation",
+      "call_id": "CALL-52",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "date": "2026-02-24",
+      "label": "customer_trust_and_negotiation_pressure",
+      "text": "GlobalHotels expressed concern that the proposed solution did not currently support a capability it believed had been part of the expected solution and stated that the limitation would need to be considered in the final commercial terms."
     }
   ],
   "email_threads": [
