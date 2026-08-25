@@ -79,7 +79,7 @@ Sony submits the first formal proposal.
 
 ### February 2 — Competitor Enters
 
-GlobalHotels informs Sony that another vendor is actively competing for the project.
+GlobalHotels informs Sony that **Competitor-X** is actively competing for the project.
 
 Competitive pricing becomes an important risk to the opportunity.
 
