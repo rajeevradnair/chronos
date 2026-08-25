@@ -1,0 +1,47 @@
+{
+  "evidence_id": "EVID-TRANSCRIPT-44",
+
+  "source_system": "conversation",
+  "source_entity_type": "transcript",
+  "source_entity_id": "TRANSCRIPT-44",
+  "document_id": "TRANSCRIPT-44",
+
+  "account_id": "ACC-1001",
+  "opportunity_id": "OPP-812",
+  "quote_id": null,
+  "quote_version_id": null,
+
+  "document_class": "customer_call",
+
+  "text": "GlobalHotels stated that Competitor-X had presented materially lower pricing and asked Sony to improve its commercial offer.",
+
+  "authority": "customer_statement",
+
+  "provenance": {
+    "source_system": "conversation",
+    "source_entity_id": "TRANSCRIPT-44",
+    "parent_entity_id": "CALL-44"
+  },
+
+  "valid_from": "2026-02-08T00:00:00Z",
+  "valid_to": null,
+
+  "system_from": "2026-02-08T00:00:00Z",
+  "system_to": null,
+
+  "permissions": {
+    "classification": "internal",
+    "allowed_roles": [
+      "sales",
+      "sales_leadership"
+    ]
+  },
+
+  "content_hash": "fixture-transcript-44-v1",
+
+  "embedding_metadata": {
+    "model": "fixture-model",
+    "version": "v1",
+    "dimensions": 1024
+  }
+}

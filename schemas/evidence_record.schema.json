@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvidenceRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_system": {
+      "type": "string",
+      "enum": [
+        "conversation",
+        "email",
+        "knowledge",
+        "support"
+      ]
+    },
+    "source_entity_type": {
+      "type": "string",
+      "enum": [
+        "transcript",
+        "email_message",
+        "pricing_policy",
+        "product_document",
+        "battlecard",
+        "playbook",
+        "ticket_event"
+      ]
+    },
+    "source_entity_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "account_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "opportunity_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "quote_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "quote_version_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "document_class": {
+      "type": "string",
+      "enum": [
+        "customer_call",
+        "customer_email",
+        "pricing_policy",
+        "product_documentation",
+        "competitive_guidance",
+        "sales_playbook",
+        "support_note"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "type": "string",
+      "enum": [
+        "official_policy",
+        "official_product_documentation",
+        "official_support_record",
+        "customer_statement",
+        "internal_guidance"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_system": {
+          "type": "string",
+          "enum": [
+            "conversation",
+            "email",
+            "knowledge",
+            "support"
+          ]
+        },
+        "source_entity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent_entity_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "source_system",
+        "source_entity_id"
+      ]
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "system_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "system_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "classification": {
+          "type": "string",
+          "enum": [
+            "internal",
+            "confidential",
+            "restricted"
+          ]
+        },
+        "allowed_roles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "classification",
+        "allowed_roles"
+      ]
+    },
+    "content_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "embedding_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dimensions": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "model",
+        "version",
+        "dimensions"
+      ]
+    }
+  },
+  "required": [
+    "evidence_id",
+    "source_system",
+    "source_entity_type",
+    "source_entity_id",
+    "document_id",
+    "document_class",
+    "text",
+    "authority",
+    "provenance",
+    "valid_from",
+    "valid_to",
+    "system_from",
+    "system_to",
+    "permissions",
+    "content_hash",
+    "embedding_metadata"
+  ]
+}
