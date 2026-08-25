@@ -1,0 +1,104 @@
+{
+  "accounts": [
+    {
+      "id": "ACC-1001",
+      "type": "account",
+      "source_system": "crm",
+      "name": "GlobalHotels Corp",
+      "label": "customer"
+    }
+  ],
+
+  "opportunities": [
+    {
+      "id": "OPP-812",
+      "type": "opportunity",
+      "source_system": "crm",
+      "account_id": "ACC-1001",
+      "name": "GlobalHotels Conference Room Modernization",
+      "value_usd": 3800000,
+      "outcome": "closed_won",
+      "label": "strategic_enterprise_opportunity"
+    }
+  ],
+
+  "quotes": [
+    {
+      "id": "QUOTE-812",
+      "type": "quote",
+      "source_system": "cpq",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "label": "globalhotels_commercial_proposal"
+    }
+  ],
+
+  "quote_versions": [
+    {
+      "id": "QUOTE-V1",
+      "quote_id": "QUOTE-812",
+      "type": "quote_version",
+      "source_system": "cpq",
+      "version": 1,
+      "date": "2026-01-25",
+      "discount_percent": 10,
+      "label": "initial_offer",
+      "summary": "Initial commercial proposal for the GlobalHotels modernization program."
+    },
+    {
+      "id": "QUOTE-V2",
+      "quote_id": "QUOTE-812",
+      "type": "quote_version",
+      "source_system": "cpq",
+      "version": 2,
+      "date": "2026-02-15",
+      "discount_percent": 13,
+      "label": "revised_offer",
+      "summary": "Revised commercial proposal after GlobalHotels requested improved pricing."
+    },
+    {
+      "id": "QUOTE-V3",
+      "quote_id": "QUOTE-812",
+      "type": "quote_version",
+      "source_system": "cpq",
+      "version": 3,
+      "date": "2026-02-28",
+      "discount_percent": 17,
+      "label": "executive_exception_offer",
+      "summary": "Final proposal containing a 17 percent discount requiring executive approval."
+    }
+  ],
+
+  "discount_requests": [
+    {
+      "id": "DISCOUNT-17",
+      "type": "discount_request",
+      "source_system": "cpq",
+      "account_id": "ACC-1001",
+      "opportunity_id": "OPP-812",
+      "quote_id": "QUOTE-812",
+      "quote_version_id": "QUOTE-V3",
+      "date": "2026-02-28",
+      "requested_discount_percent": 17,
+      "status_at_creation": "pending",
+      "label": "executive_exception_required",
+      "summary": "Formal request for approval of the 17 percent discount in Quote v3."
+    }
+  ],
+
+  "approvals": [],
+
+  "calls": [],
+  "transcripts": [],
+
+  "email_threads": [],
+  "email_messages": [],
+
+  "pricing_policies": [],
+  "product_documents": [],
+  "battlecards": [],
+  "playbooks": [],
+
+  "support_tickets": [],
+  "ticket_events": []
+}
