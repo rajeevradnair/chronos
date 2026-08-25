@@ -78,3 +78,118 @@ GlobalHotels may appear in:
 But:
 
 **CRM remains authoritative for the Account.**
+
+---
+
+# 2. Transactional Entities
+
+Transactional entities represent business state, commercial actions, or formal decisions.
+
+| Entity | Purpose | Authoritative Source |
+|---|---|---|
+| Opportunity | Commercial sales opportunity | CRM |
+| Quote | Commercial proposal for an opportunity | CPQ |
+| QuoteVersion | Specific historical version of a quote | CPQ |
+| QuoteLine | Product/service line included in a quote | CPQ |
+| DiscountRequest | Formal request for exceptional discounting | CPQ |
+| Approval | Formal approval or rejection of a commercial exception | CPQ |
+| SupportTicket | Formal customer support case | Support |
+
+## GlobalHotels Examples
+
+| Entity | Example |
+|---|---|
+| Opportunity | OPP-812 — GlobalHotels modernization deal |
+| QuoteVersion | Quote v1 — January 25 |
+| QuoteVersion | Quote v2 — February 15 |
+| QuoteVersion | Quote v3 — February 28 |
+| DiscountRequest | 17% discount request |
+| Approval | VP approval on March 5 |
+| SupportTicket | Customer/product issue associated with the opportunity |
+
+## Ownership Examples
+
+### Opportunity
+
+CRM owns:
+
+- opportunity ID
+- customer/account relationship
+- opportunity value
+- stage
+- forecast state
+- final outcome
+
+For example:
+
+OPP-812
+→ $3.8M opportunity
+→ Closed Won
+
+CRM is authoritative for those facts.
+
+---
+
+### Quote and QuoteVersion
+
+CPQ owns:
+
+- quote identity
+- quote versions
+- quote lines
+- prices
+- discounts
+- commercial terms
+
+For example:
+
+Quote v3
+→ submitted February 28
+→ 17% discount
+
+CPQ is authoritative for those facts.
+
+---
+
+### DiscountRequest and Approval
+
+CPQ owns the formal commercial approval workflow.
+
+For example:
+
+17% discount request
+→ requires executive exception
+→ VP approves March 5
+
+An email discussing approval may provide useful evidence, but the official Approval record remains authoritative for whether approval actually occurred.
+
+---
+
+### SupportTicket
+
+The Support system owns formal support cases and their state.
+
+For example:
+
+Support records may show:
+
+- issue reported
+- issue status
+- escalation
+- resolution
+
+An email mentioning the same problem does not replace the official SupportTicket.
+
+## Important Rule
+
+Transactional fact:
+
+"VP approved the 17% discount."
+→ authoritative source: CPQ Approval
+
+Explanatory evidence:
+
+"Why did the VP approve it?"
+→ may require CRM + calls + email + policy + competitor evidence
+
+Chronos must keep these two concepts separate.
