@@ -1,47 +1,321 @@
 {
-  "evidence_id": "EVID-TRANSCRIPT-44",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvidenceRecord",
+  "description": "A normalized unit of evidence that Chronos can retrieve, rank, cite, and reason over.",
 
-  "source_system": "conversation",
-  "source_entity_type": "transcript",
-  "source_entity_id": "TRANSCRIPT-44",
-  "document_id": "TRANSCRIPT-44",
+  "type": "object",
+  "additionalProperties": false,
 
-  "account_id": "ACC-1001",
-  "opportunity_id": "OPP-812",
-  "quote_id": null,
-  "quote_version_id": null,
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Unique Chronos identifier for this EvidenceRecord. Identifies the evidence object itself, independent of its source document or chunk."
+    },
 
-  "document_class": "customer_call",
+    "evidence_granularity": {
+      "type": "string",
+      "enum": [
+        "document",
+        "chunk"
+      ],
+      "$comment": "Defines the granularity of this evidence. 'document' means the EvidenceRecord represents the normalized document as a whole. 'chunk' means it represents a specific portion of that document."
+    },
 
-  "text": "GlobalHotels stated that Competitor-X had presented materially lower pricing and asked Sony to improve its commercial offer.",
+    "source_system": {
+      "type": "string",
+      "enum": [
+        "conversation",
+        "email",
+        "knowledge",
+        "support"
+      ],
+      "$comment": "The external or upstream system/domain from which this evidence originated."
+    },
 
-  "authority": "customer_statement",
+    "source_entity_type": {
+      "type": "string",
+      "enum": [
+        "transcript",
+        "email_message",
+        "pricing_policy",
+        "product_document",
+        "battlecard",
+        "playbook",
+        "ticket_event"
+      ],
+      "$comment": "Type of the original source object. Describes what the object was before Chronos normalized it."
+    },
 
-  "provenance": {
-    "source_system": "conversation",
-    "source_entity_id": "TRANSCRIPT-44",
-    "parent_entity_id": "CALL-44"
+    "source_entity_id": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Identifier of the original object in the source system. Answers: 'What upstream object did this evidence originate from?'"
+    },
+
+    "document_id": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Chronos identifier for the normalized document created from the source entity. One source entity may produce one or more normalized documents."
+    },
+
+    "chunk_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "$comment": "Chronos identifier for the specific chunk within the normalized document. Required to contain a value when evidence_granularity='chunk'; null when evidence_granularity='document'."
+    },
+
+    "account_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "$comment": "Optional business-context identifier linking this evidence to an account."
+    },
+
+    "opportunity_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "$comment": "Optional business-context identifier linking this evidence to a sales opportunity."
+    },
+
+    "quote_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "$comment": "Optional identifier linking the evidence to a quote."
+    },
+
+    "quote_version_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "$comment": "Optional identifier linking the evidence to a specific version of a quote."
+    },
+
+    "document_class": {
+      "type": "string",
+      "enum": [
+        "customer_call",
+        "customer_email",
+        "pricing_policy",
+        "product_documentation",
+        "competitive_guidance",
+        "sales_playbook",
+        "support_note"
+      ],
+      "$comment": "Chronos semantic classification of the normalized document. Unlike source_entity_type, this describes how Chronos interprets the content."
+    },
+
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "The actual evidence text. For document-level evidence this may contain the normalized document text; for chunk-level evidence it contains only the chunk text."
+    },
+
+    "authority": {
+      "type": "string",
+      "enum": [
+        "official_policy",
+        "official_product_documentation",
+        "official_support_record",
+        "customer_statement",
+        "internal_guidance"
+      ],
+      "$comment": "Describes the authority of the evidence so Chronos can distinguish, for example, official policy from customer statements or internal guidance."
+    },
+
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+
+      "$comment": "Additional lineage information that cannot be represented by the primary source identifiers.",
+
+      "properties": {
+        "parent_entity_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "$comment": "Optional identifier of a containing or parent source object. Example: an email message may have an email thread as its parent."
+        }
+      },
+
+      "required": [
+        "parent_entity_id"
+      ]
+    },
+
+    "valid_from": {
+      "type": "string",
+      "format": "date-time",
+      "$comment": "Business-time start: when the information represented by this evidence became valid in the real world."
+    },
+
+    "valid_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "$comment": "Business-time end: when this information stopped being valid. Null means it is still considered valid or no end is known."
+    },
+
+    "system_from": {
+      "type": "string",
+      "format": "date-time",
+      "$comment": "System-time start: when Chronos began storing this version of the EvidenceRecord."
+    },
+
+    "system_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "$comment": "System-time end: when Chronos stopped considering this version current. Null represents the current stored version."
+    },
+
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+
+      "$comment": "Access-control metadata inherited or derived from the source content.",
+
+      "properties": {
+        "classification": {
+          "type": "string",
+          "enum": [
+            "internal",
+            "confidential",
+            "restricted"
+          ],
+          "$comment": "Security classification assigned to the evidence."
+        },
+
+        "allowed_roles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "$comment": "Roles authorized to retrieve or consume this evidence."
+        }
+      },
+
+      "required": [
+        "classification",
+        "allowed_roles"
+      ]
+    },
+
+    "content_hash": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Hash of the evidence content used for change detection, deduplication, and determining whether derived artifacts such as embeddings need regeneration."
+    },
+
+    "embedding_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+
+      "$comment": "Metadata describing the embedding generated for this EvidenceRecord. The embedding vector itself may live in the vector store rather than in this record.",
+
+      "properties": {
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Embedding model used to generate the vector."
+        },
+
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "Version of the embedding model or embedding pipeline."
+        },
+
+        "dimensions": {
+          "type": "integer",
+          "minimum": 1,
+          "$comment": "Number of dimensions in the generated embedding vector."
+        }
+      },
+
+      "required": [
+        "model",
+        "version",
+        "dimensions"
+      ]
+    }
   },
 
-  "valid_from": "2026-02-08T00:00:00Z",
-  "valid_to": null,
+  "required": [
+    "evidence_id",
+    "evidence_granularity",
+    "source_system",
+    "source_entity_type",
+    "source_entity_id",
+    "document_id",
+    "chunk_id",
+    "document_class",
+    "text",
+    "authority",
+    "provenance",
+    "valid_from",
+    "valid_to",
+    "system_from",
+    "system_to",
+    "permissions",
+    "content_hash",
+    "embedding_metadata"
+  ],
 
-  "system_from": "2026-02-08T00:00:00Z",
-  "system_to": null,
-
-  "permissions": {
-    "classification": "internal",
-    "allowed_roles": [
-      "sales",
-      "sales_leadership"
-    ]
-  },
-
-  "content_hash": "fixture-transcript-44-v1",
-
-  "embedding_metadata": {
-    "model": "fixture-model",
-    "version": "v1",
-    "dimensions": 1024
-  }
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "evidence_granularity": {
+            "const": "chunk"
+          }
+        },
+        "required": [
+          "evidence_granularity"
+        ]
+      },
+      "then": {
+        "properties": {
+          "chunk_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_granularity": {
+            "const": "document"
+          }
+        },
+        "required": [
+          "evidence_granularity"
+        ]
+      },
+      "then": {
+        "properties": {
+          "chunk_id": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
 }
