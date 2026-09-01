@@ -37,6 +37,12 @@
       "type": "string",
       "minLength": 1
     },
+    "chunk_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "account_id": {
       "type": [
         "string",
@@ -198,6 +204,7 @@
     "source_entity_type",
     "source_entity_id",
     "document_id",
+    "chunk_id",
     "document_class",
     "text",
     "authority",
