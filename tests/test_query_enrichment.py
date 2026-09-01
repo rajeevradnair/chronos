@@ -1,10 +1,10 @@
+import json
 import unittest
 from unittest.mock import patch
 
-from fastapi.testclient import TestClient
 from pydantic import ValidationError
 
-from query_enrichment.api import app
+from query_enrichment.enricher import BedrockQueryEnricher
 from query_enrichment.models import StructuredQueryIntent
 
 
@@ -31,24 +31,58 @@ VALID_INTENT = {
 }
 
 
+class FakeBedrockClient:
+
+    def __init__(self):
+        self.last_request = None
+
+    def converse(self, **kwargs):
+        self.last_request = kwargs
+
+        return {
+            "output": {
+                "message": {
+                    "content": [
+                        {
+                            "text": json.dumps(VALID_INTENT),
+                        }
+                    ]
+                }
+            }
+        }
+
+
 class QueryEnrichmentTests(unittest.TestCase):
 
     def test_structured_intent_accepts_valid_result(self):
-        result = StructuredQueryIntent.model_validate(VALID_INTENT)
+        result = StructuredQueryIntent.model_validate(
+            VALID_INTENT
+        )
 
-        self.assertEqual(result.entities.account, "GlobalHotels")
+        self.assertEqual(
+            result.entities.account,
+            "GlobalHotels",
+        )
         self.assertIsNone(result.entities.opportunity)
         self.assertIsNone(result.entities.quote)
-        self.assertEqual(result.filters.discount_percent, 17)
+        self.assertEqual(
+            result.filters.discount_percent,
+            17,
+        )
 
     def test_structured_intent_rejects_unknown_retrieval_target(self):
         invalid = {
             **VALID_INTENT,
-            "retrieval_targets": ["quote", "invented_target"],
+            "retrieval_targets": [
+                "quote",
+                "invented_target",
+            ],
         }
 
         with self.assertRaises(ValidationError):
-            StructuredQueryIntent.model_validate(invalid)
+            StructuredQueryIntent.model_validate(
+                invalid
+            )
 
     def test_structured_intent_rejects_extra_fields(self):
         invalid = {
@@ -57,40 +91,81 @@ class QueryEnrichmentTests(unittest.TestCase):
         }
 
         with self.assertRaises(ValidationError):
-            StructuredQueryIntent.model_validate(invalid)
+            StructuredQueryIntent.model_validate(
+                invalid
+            )
 
-    @patch("query_enrichment.api.enrich_query")
-    def test_enrich_endpoint_returns_structured_intent(self, mock_enrich):
-        mock_enrich.return_value = StructuredQueryIntent.model_validate(
-            VALID_INTENT
+    @patch("query_enrichment.enricher.boto3.client")
+    def test_enricher_returns_structured_intent(
+        self,
+        mock_boto_client,
+    ):
+        fake_client = FakeBedrockClient()
+        mock_boto_client.return_value = fake_client
+
+        enricher = BedrockQueryEnricher(
+            model_id="test-model",
         )
 
-        client = TestClient(app)
-
-        response = client.post(
-            "/enrich",
-            json={
-                "question": "Why did we approve 17% for GlobalHotels?"
-            },
+        result = enricher.enrich(
+            "Why did we approve 17% for GlobalHotels?"
         )
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            result.intent,
+            "decision_explanation",
+        )
+        self.assertEqual(
+            result.entities.account,
+            "GlobalHotels",
+        )
+        self.assertEqual(
+            result.decision_type,
+            "discount_approval",
+        )
+        self.assertEqual(
+            result.historical_boundary,
+            "approval_time",
+        )
+        self.assertEqual(
+            result.filters.discount_percent,
+            17,
+        )
 
-        body = response.json()
+    @patch("query_enrichment.enricher.boto3.client")
+    def test_enricher_sends_question_to_bedrock(
+        self,
+        mock_boto_client,
+    ):
+        fake_client = FakeBedrockClient()
+        mock_boto_client.return_value = fake_client
 
-        self.assertEqual(body["entities"]["account"], "GlobalHotels")
-        self.assertIsNone(body["entities"]["opportunity"])
-        self.assertIsNone(body["entities"]["quote"])
-        self.assertEqual(body["filters"]["discount_percent"], 17)
+        enricher = BedrockQueryEnricher(
+            model_id="test-model",
+        )
 
-    @patch("query_enrichment.api.enrich_query")
-    def test_invalid_request_does_not_call_bedrock(self, mock_enrich):
-        client = TestClient(app)
+        question = (
+            "Why did we approve 17% for GlobalHotels?"
+        )
 
-        response = client.post("/enrich", json={})
+        enricher.enrich(question)
 
-        self.assertEqual(response.status_code, 422)
-        mock_enrich.assert_not_called()
+        request = fake_client.last_request
+
+        self.assertEqual(
+            request["modelId"],
+            "test-model",
+        )
+
+        self.assertEqual(
+            request["messages"][0]["content"][0]["text"],
+            question,
+        )
+
+        self.assertEqual(
+            request["inferenceConfig"]["temperature"],
+            0,
+        )
 
 
 if __name__ == "__main__":

@@ -24,53 +24,69 @@ Rules:
 """
 
 
-def enrich_query(question: str) -> StructuredQueryIntent:
-    client = boto3.client(
-        "bedrock-runtime",
-        region_name=os.getenv("AWS_REGION", "us-west-2"),
-    )
+class BedrockQueryEnricher:
 
-    schema = StructuredQueryIntent.model_json_schema()
+    def __init__(
+        self,
+        model_id: str,
+        region_name: str | None = None,
+    ):
+        self.model_id = model_id
 
-    #print("StructuredQueryIntent schema:")
-    #print(schema)
-    #print("********************")
+        self.client = boto3.client(
+            "bedrock-runtime",
+            region_name=region_name
+            or os.getenv("AWS_REGION", "us-west-2"),
+        )
 
-    response = client.converse(
-        modelId=os.environ["CHRONOS_BEDROCK_MODEL_ID"],
-        system=[
-            {
-                "text": SYSTEM_PROMPT,
-            }
-        ],
-        messages=[
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "text": question,
-                    }
-                ],
-            }
-        ],
-        outputConfig={
-            "textFormat": {
-                "type": "json_schema",
-                "structure": {
-                    "jsonSchema": {
-                        "name": "structured_query_intent",
-                        "description": "Chronos structured query intent",
-                        "schema": json.dumps(schema),
-                    }
-                },
-            }
-        },
-        inferenceConfig={
-            "maxTokens": 500,
-            "temperature": 0,
-        },
-    )
+    def enrich(
+        self,
+        question: str,
+    ) -> StructuredQueryIntent:
 
-    response_text = response["output"]["message"]["content"][0]["text"]
+        schema = StructuredQueryIntent.model_json_schema()
 
-    return StructuredQueryIntent.model_validate_json(response_text)
+        response = self.client.converse(
+            modelId=self.model_id,
+            system=[
+                {
+                    "text": SYSTEM_PROMPT,
+                }
+            ],
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "text": question,
+                        }
+                    ],
+                }
+            ],
+            outputConfig={
+                "textFormat": {
+                    "type": "json_schema",
+                    "structure": {
+                        "jsonSchema": {
+                            "name": "structured_query_intent",
+                            "description": (
+                                "Chronos structured query intent"
+                            ),
+                            "schema": json.dumps(schema),
+                        }
+                    },
+                }
+            },
+            inferenceConfig={
+                "maxTokens": 500,
+                "temperature": 0,
+            },
+        )
+
+        response_text = (
+            response["output"]["message"]["content"][0]["text"]
+        )
+
+        return StructuredQueryIntent.model_validate_json(
+            response_text
+        )
