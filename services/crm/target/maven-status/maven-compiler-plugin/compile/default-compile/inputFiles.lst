@@ -8,6 +8,9 @@
 /Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/ForecastHistory.java
 /Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/ForecastHistoryRepository.java
 /Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/Opportunity.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/OpportunityAsOf.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/OpportunityController.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/OpportunityHistoryService.java
 /Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/OpportunityRepository.java
 /Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/OwnerHistory.java
 /Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/OwnerHistoryRepository.java

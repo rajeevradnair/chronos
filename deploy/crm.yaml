@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: chronos-crm
-          image: 280480953008.dkr.ecr.us-west-2.amazonaws.com/chronos-dev:crm-v1
+          image: 280480953008.dkr.ecr.us-west-2.amazonaws.com/chronos-dev:crm-v2
 
           ports:
             - containerPort: 8080

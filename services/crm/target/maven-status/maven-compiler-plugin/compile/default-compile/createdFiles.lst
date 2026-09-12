@@ -1,9 +1,12 @@
 com/chronos/crm/account/AccountController.class
+com/chronos/crm/opportunity/OpportunityHistoryService.class
 com/chronos/crm/account/AccountRepository.class
 com/chronos/crm/account/Account.class
 com/chronos/crm/CrmApplication.class
+com/chronos/crm/opportunity/OpportunityAsOf.class
 com/chronos/crm/opportunity/OwnerHistoryRepository.class
 com/chronos/crm/contact/Contact.class
+com/chronos/crm/opportunity/OpportunityController.class
 com/chronos/crm/opportunity/ForecastHistoryRepository.class
 com/chronos/crm/opportunity/OpportunityRepository.class
 com/chronos/crm/opportunity/ValueHistory.class
