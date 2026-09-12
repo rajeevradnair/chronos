@@ -1,0 +1,16 @@
+aws_region = "us-west-2"
+ecr_repository_url = "280480953008.dkr.ecr.us-west-2.amazonaws.com/chronos-dev"
+eks_cluster_endpoint = "https://DD5BFE6938B9B6BC7BBD8291D105937D.gr7.us-west-2.eks.amazonaws.com"
+eks_cluster_name = "chronos-dev"
+eks_oidc_provider_arn = "arn:aws:iam::280480953008:oidc-provider/oidc.eks.us-west-2.amazonaws.com/id/DD5BFE6938B9B6BC7BBD8291D105937D"
+environment = "dev"
+private_subnet_ids = [
+  "subnet-0f227332942ce63f2",
+  "subnet-014bd0c088092afc9",
+]
+public_subnet_ids = [
+  "subnet-03cc3d601095b1311",
+  "subnet-05c62bd9d12715e17",
+]
+vpc_id = "vpc-0920a62b82dbf31f4"
+

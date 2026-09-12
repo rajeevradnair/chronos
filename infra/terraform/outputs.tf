@@ -27,3 +27,15 @@ output "ecr_repository_url" {
   description = "Chronos ECR repository URL"
   value       = aws_ecr_repository.chronos.repository_url
 }
+
+output "eks_cluster_name" {
+  value = aws_eks_cluster.chronos.name
+}
+
+output "eks_cluster_endpoint" {
+  value = aws_eks_cluster.chronos.endpoint
+}
+
+output "eks_oidc_provider_arn" {
+  value = aws_iam_openid_connect_provider.eks.arn
+}
