@@ -15,3 +15,10 @@ variable "crm_db_password" {
   type        = string
   sensitive   = true
 }
+
+variable "cpq_db_password" {
+  description = "Master password for the CPQ PostgreSQL database"
+  type        = string
+  sensitive   = true
+}
+

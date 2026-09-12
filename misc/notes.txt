@@ -1,9 +1,11 @@
 aws_account_id = "280480953008"
 aws_region = "us-west-2"
+cpq_db_endpoint = "chronos-dev-cpq.cfcsmokk2cj0.us-west-2.rds.amazonaws.com"
+cpq_db_name = "chronos_cpq"
+cpq_db_port = 5432
 crm_db_endpoint = "chronos-dev-crm.cfcsmokk2cj0.us-west-2.rds.amazonaws.com"
 crm_db_name = "chronos_crm"
 crm_db_port = 5432
-instance id of chronos-dev-crm =  db-FH3HNVC34GDAPH5MP2DRQH6MZY 
 ecr_repository_url = "280480953008.dkr.ecr.us-west-2.amazonaws.com/chronos-dev"
 eks_cluster_endpoint = "https://DD5BFE6938B9B6BC7BBD8291D105937D.gr7.us-west-2.eks.amazonaws.com"
 eks_cluster_name = "chronos-dev"
@@ -18,4 +20,3 @@ public_subnet_ids = [
   "subnet-05c62bd9d12715e17",
 ]
 vpc_id = "vpc-0920a62b82dbf31f4"
-

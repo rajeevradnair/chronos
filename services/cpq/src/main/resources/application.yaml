@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${CPQ_DB_HOST}:${CPQ_DB_PORT:5432}/${CPQ_DB_NAME:chronos_cpq}
+    username: ${CPQ_DB_USERNAME:chronos}
+    password: ${CPQ_DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false

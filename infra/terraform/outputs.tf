@@ -54,3 +54,18 @@ output "crm_db_name" {
   description = "CRM PostgreSQL database name"
   value       = aws_db_instance.crm.db_name
 }
+
+output "cpq_db_endpoint" {
+  description = "CPQ PostgreSQL endpoint"
+  value       = aws_db_instance.cpq.address
+}
+
+output "cpq_db_port" {
+  description = "CPQ PostgreSQL port"
+  value       = aws_db_instance.cpq.port
+}
+
+output "cpq_db_name" {
+  description = "CPQ PostgreSQL database name"
+  value       = aws_db_instance.cpq.db_name
+}
