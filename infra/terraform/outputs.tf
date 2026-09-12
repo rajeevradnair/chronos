@@ -39,3 +39,18 @@ output "eks_cluster_endpoint" {
 output "eks_oidc_provider_arn" {
   value = aws_iam_openid_connect_provider.eks.arn
 }
+
+output "crm_db_endpoint" {
+  description = "CRM PostgreSQL endpoint"
+  value       = aws_db_instance.crm.address
+}
+
+output "crm_db_port" {
+  description = "CRM PostgreSQL port"
+  value       = aws_db_instance.crm.port
+}
+
+output "crm_db_name" {
+  description = "CRM PostgreSQL database name"
+  value       = aws_db_instance.crm.db_name
+}

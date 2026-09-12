@@ -9,3 +9,9 @@ variable "environment" {
   type        = string
   default     = "dev"
 }
+
+variable "crm_db_password" {
+  description = "Master password for the CRM PostgreSQL database"
+  type        = string
+  sensitive   = true
+}

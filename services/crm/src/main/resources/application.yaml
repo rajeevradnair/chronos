@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: chronos-crm
+
+  datasource:
+    url: jdbc:postgresql://${CRM_DB_HOST}:${CRM_DB_PORT:5432}/${CRM_DB_NAME:chronos_crm}
+    username: ${CRM_DB_USERNAME:chronos}
+    password: ${CRM_DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    open-in-view: false
