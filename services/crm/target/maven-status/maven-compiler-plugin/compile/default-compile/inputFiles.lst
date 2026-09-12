@@ -5,3 +5,13 @@
 /Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/contact/Contact.java
 /Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/contact/ContactController.java
 /Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/contact/ContactRepository.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/ForecastHistory.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/ForecastHistoryRepository.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/Opportunity.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/OpportunityRepository.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/OwnerHistory.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/OwnerHistoryRepository.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/StageHistory.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/StageHistoryRepository.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/ValueHistory.java
+/Users/rnair/projects/chronos/services/crm/src/main/java/com/chronos/crm/opportunity/ValueHistoryRepository.java
