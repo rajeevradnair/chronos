@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import com.chronos.cpq.quote.QuoteService;
+import com.chronos.cpq.approval.ApprovalService;
 import java.math.BigDecimal;
 
 @SpringBootApplication
@@ -21,7 +22,8 @@ public class CpqApplication {
             ProductRepository products,
             SkuRepository skus,
             PriceBookRepository prices,
-            QuoteService quoteService) {
+            QuoteService quoteService, 
+            ApprovalService approvalService) {
 
         return args -> {
 
@@ -125,7 +127,10 @@ public class CpqApplication {
                     "450000.00");
 
 
-            quoteService.createGlobalHotelsQuoteV1IfMissing();
+            quoteService.createGlobalHotelsQuoteHistoryIfMissing();
+
+                approvalService.createGlobalHotelsApprovalPathIfMissing();
+
         };
     }
 

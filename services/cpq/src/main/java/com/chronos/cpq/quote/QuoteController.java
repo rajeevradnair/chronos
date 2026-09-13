@@ -2,6 +2,8 @@ package com.chronos.cpq.quote;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/quotes")
 public class QuoteController {
@@ -12,10 +14,10 @@ public class QuoteController {
         this.quotes = quotes;
     }
 
-    @GetMapping("/{id}")
-    public QuoteResponse findQuote(
+    @GetMapping("/{id}/versions")
+    public List<QuoteResponse> versions(
             @PathVariable String id) {
 
-        return quotes.findQuote(id);
+        return quotes.findVersions(id);
     }
 }

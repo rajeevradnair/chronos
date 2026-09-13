@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest(properties = {
-        "spring.datasource.url=jdbc:h2:mem:cpq-api",
+        "spring.datasource.url=jdbc:h2:mem:cpq-controller",
         "spring.datasource.driver-class-name=org.h2.Driver",
         "spring.datasource.username=sa",
         "spring.datasource.password=",
@@ -23,31 +23,23 @@ class QuoteControllerTests {
     MockMvc mockMvc;
 
     @Test
-    void returnsGlobalHotelsQuoteV1() throws Exception {
+    void returnsGlobalHotelsQuoteVersions() throws Exception {
 
         mockMvc.perform(
-                        get("/quotes/QUOTE-V1"))
-
+                        get("/quotes/QUOTE-1001/versions"))
                 .andExpect(status().isOk())
-
-                .andExpect(
-                        jsonPath("$.quoteId")
-                                .value("QUOTE-V1"))
-
-                .andExpect(
-                        jsonPath("$.accountId")
-                                .value("ACC-1001"))
-
-                .andExpect(
-                        jsonPath("$.opportunityId")
-                                .value("OPP-812"))
-
-                .andExpect(
-                        jsonPath("$.lines.length()")
-                                .value(5))
-
-                .andExpect(
-                        jsonPath("$.total")
-                                .value(3800000));
+                .andExpect(jsonPath("$.length()").value(3))
+                .andExpect(jsonPath("$[0].quoteVersionId")
+                        .value("QUOTE-V1"))
+                .andExpect(jsonPath("$[0].versionNumber")
+                        .value(1))
+                .andExpect(jsonPath("$[1].quoteVersionId")
+                        .value("QUOTE-V2"))
+                .andExpect(jsonPath("$[1].versionNumber")
+                        .value(2))
+                .andExpect(jsonPath("$[2].quoteVersionId")
+                        .value("QUOTE-V3"))
+                .andExpect(jsonPath("$[2].versionNumber")
+                        .value(3));
     }
 }

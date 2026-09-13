@@ -6,8 +6,8 @@ import java.util.List;
 
 public record QuoteResponse(
         String quoteId,
-        String accountId,
-        String opportunityId,
+        String quoteVersionId,
+        int versionNumber,
         Instant createdAt,
         List<Line> lines,
         BigDecimal total) {
@@ -19,29 +19,32 @@ public record QuoteResponse(
             BigDecimal lineTotal) {
     }
 
-    public static QuoteResponse from(Quote quote) {
+    public static QuoteResponse from(
+            QuoteVersion version) {
 
-        List<Line> lines = quote.getLines()
-                .stream()
-                .map(line ->
-                        new Line(
-                                line.getSkuId(),
-                                line.getQuantity(),
-                                line.getUnitPrice(),
-                                line.getLineTotal()))
-                .toList();
+        List<Line> lines =
+                version.getLines()
+                        .stream()
+                        .map(line ->
+                                new Line(
+                                        line.getSkuId(),
+                                        line.getQuantity(),
+                                        line.getUnitPrice(),
+                                        line.getLineTotal()))
+                        .toList();
 
-        BigDecimal total = lines.stream()
-                .map(Line::lineTotal)
-                .reduce(
-                        BigDecimal.ZERO,
-                        BigDecimal::add);
+        BigDecimal total =
+                lines.stream()
+                        .map(Line::lineTotal)
+                        .reduce(
+                                BigDecimal.ZERO,
+                                BigDecimal::add);
 
         return new QuoteResponse(
-                quote.getId(),
-                quote.getAccountId(),
-                quote.getOpportunityId(),
-                quote.getCreatedAt(),
+                version.getQuote().getId(),
+                version.getId(),
+                version.getVersionNumber(),
+                version.getCreatedAt(),
                 lines,
                 total);
     }

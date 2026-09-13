@@ -1,4 +1,13 @@
 /Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/CpqApplication.java
+/Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/approval/Approval.java
+/Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/approval/ApprovalController.java
+/Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/approval/ApprovalPathResponse.java
+/Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/approval/ApprovalRepository.java
+/Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/approval/ApprovalService.java
+/Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/approval/DiscountRequest.java
+/Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/approval/DiscountRequestRepository.java
+/Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/approval/PricingRule.java
+/Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/approval/PricingRuleRepository.java
 /Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/catalog/PriceBook.java
 /Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/catalog/PriceBookRepository.java
 /Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/catalog/Product.java
@@ -12,3 +21,5 @@
 /Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/quote/QuoteRepository.java
 /Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/quote/QuoteResponse.java
 /Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/quote/QuoteService.java
+/Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/quote/QuoteVersion.java
+/Users/rnair/projects/chronos/services/cpq/src/main/java/com/chronos/cpq/quote/QuoteVersionRepository.java

@@ -20,3 +20,14 @@ public_subnet_ids = [
   "subnet-05c62bd9d12715e17",
 ]
 vpc_id = "vpc-0920a62b82dbf31f4"
+
+db passwords = ChronosDev123!
+
+kubectl create secret generic chronos-cpq-db \
+  --from-literal=CPQ_DB_HOST='chronos-dev-cpq.cfcsmokk2cj0.us-west-2.rds.amazonaws.com' \
+  --from-literal=CPQ_DB_PORT='5432' \
+  --from-literal=CPQ_DB_NAME='chronos_cpq' \
+  --from-literal=CPQ_DB_USERNAME='chronos' \
+  --from-literal=CPQ_DB_PASSWORD='ChronosDev123!' \
+  --dry-run=client \
+  -o yaml | kubectl apply -f -

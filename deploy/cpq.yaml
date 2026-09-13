@@ -19,7 +19,7 @@ spec:
       containers:
         - name: cpq
 
-          image: 280480953008.dkr.ecr.us-west-2.amazonaws.com/chronos-dev:cpq-v1
+          image: 280480953008.dkr.ecr.us-west-2.amazonaws.com/chronos-dev:cpq-v2
 
           ports:
             - containerPort: 8080

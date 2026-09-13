@@ -12,8 +12,8 @@ public class QuoteLine {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name = "quote_id", nullable = false)
-    private Quote quote;
+    @JoinColumn(name = "quote_version_id", nullable = false)
+    private QuoteVersion quoteVersion;
 
     private String skuId;
 
@@ -26,13 +26,13 @@ public class QuoteLine {
 
     public QuoteLine(
             String id,
-            Quote quote,
+            QuoteVersion quoteVersion,
             String skuId,
             Integer quantity,
             BigDecimal unitPrice) {
 
         this.id = id;
-        this.quote = quote;
+        this.quoteVersion = quoteVersion;
         this.skuId = skuId;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
@@ -40,6 +40,10 @@ public class QuoteLine {
 
     public String getId() {
         return id;
+    }
+
+    public QuoteVersion getQuoteVersion() {
+        return quoteVersion;
     }
 
     public String getSkuId() {
