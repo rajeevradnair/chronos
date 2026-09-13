@@ -1,0 +1,5 @@
+com/chronos/conversation/call/Call.class
+com/chronos/conversation/call/TranscriptRepository.class
+com/chronos/conversation/ConversationApplication.class
+com/chronos/conversation/call/Transcript.class
+com/chronos/conversation/call/CallRepository.class

@@ -22,3 +22,12 @@ variable "cpq_db_password" {
   sensitive   = true
 }
 
+variable "conversation_db_password" {
+  type      = string
+  sensitive = true
+}
+
+variable "knowledge_db_password" {
+  type      = string
+  sensitive = true
+}

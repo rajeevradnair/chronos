@@ -1,5 +1,8 @@
 aws_account_id = "280480953008"
 aws_region = "us-west-2"
+conversation_db_endpoint = "chronos-dev-conversation.cfcsmokk2cj0.us-west-2.rds.amazonaws.com"
+conversation_db_name = "chronos_conversation"
+conversation_db_port = 5432
 cpq_db_endpoint = "chronos-dev-cpq.cfcsmokk2cj0.us-west-2.rds.amazonaws.com"
 cpq_db_name = "chronos_cpq"
 cpq_db_port = 5432
@@ -11,6 +14,9 @@ eks_cluster_endpoint = "https://DD5BFE6938B9B6BC7BBD8291D105937D.gr7.us-west-2.e
 eks_cluster_name = "chronos-dev"
 eks_oidc_provider_arn = "arn:aws:iam::280480953008:oidc-provider/oidc.eks.us-west-2.amazonaws.com/id/DD5BFE6938B9B6BC7BBD8291D105937D"
 environment = "dev"
+knowledge_db_endpoint = "chronos-dev-knowledge.cfcsmokk2cj0.us-west-2.rds.amazonaws.com"
+knowledge_db_name = "chronos_knowledge"
+knowledge_db_port = 5432
 private_subnet_ids = [
   "subnet-0f227332942ce63f2",
   "subnet-014bd0c088092afc9",
@@ -29,5 +35,20 @@ kubectl create secret generic chronos-cpq-db \
   --from-literal=CPQ_DB_NAME='chronos_cpq' \
   --from-literal=CPQ_DB_USERNAME='chronos' \
   --from-literal=CPQ_DB_PASSWORD='ChronosDev123!' \
+  --dry-run=client \
+  -o yaml | kubectl apply -f -
+
+export TF_VAR_crm_db_password='ChronosDev123!'
+export TF_VAR_cpq_db_password='ChronosDev123!'
+export TF_VAR_conversation_db_password='ChronosDev123!'
+export TF_VAR_knowledge_db_password='ChronosDev123!'
+
+
+kubectl create secret generic chronos-conversation-db \
+  --from-literal=CONVERSATION_DB_HOST='chronos-dev-conversation.cfcsmokk2cj0.us-west-2.rds.amazonaws.com' \
+  --from-literal=CONVERSATION_DB_PORT='5432' \
+  --from-literal=CONVERSATION_DB_NAME='chronos_conversation' \
+  --from-literal=CONVERSATION_DB_USERNAME='chronos' \
+  --from-literal=CONVERSATION_DB_PASSWORD='ChronosDev123!' \
   --dry-run=client \
   -o yaml | kubectl apply -f -

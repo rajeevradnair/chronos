@@ -1,0 +1,10 @@
+com/chronos/knowledge/document/KnowledgeDocumentVersionRepository.class
+com/chronos/knowledge/policy/PricingPolicyVersion.class
+com/chronos/knowledge/document/KnowledgeDocumentType.class
+com/chronos/knowledge/KnowledgeApplication.class
+com/chronos/knowledge/document/KnowledgeDocumentVersion.class
+com/chronos/knowledge/document/KnowledgeDocumentRepository.class
+com/chronos/knowledge/policy/PricingPolicyRepository.class
+com/chronos/knowledge/policy/PricingPolicyVersionRepository.class
+com/chronos/knowledge/document/KnowledgeDocument.class
+com/chronos/knowledge/policy/PricingPolicy.class

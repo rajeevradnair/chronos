@@ -29,44 +29,44 @@ public class ApprovalService {
     }
 
     @Transactional(readOnly = true)
-public ApprovalPathResponse findApprovalPath(
+    public ApprovalPathResponse findApprovalPath(
         String quoteVersionId) {
 
-    DiscountRequest request =
-            discountRequests
-                    .findByQuoteVersionId(quoteVersionId)
-                    .orElseThrow();
+        DiscountRequest request =
+                discountRequests
+                        .findByQuoteVersionId(quoteVersionId)
+                        .orElseThrow();
 
-    PricingRule rule = request.getPricingRule();
+        PricingRule rule = request.getPricingRule();
 
-    boolean exceptionRequired =
-            request.getRequestedPercent()
-                    .compareTo(
-                            rule.getApprovalThresholdPercent()) > 0;
+        boolean exceptionRequired =
+                request.getRequestedPercent()
+                        .compareTo(
+                                rule.getApprovalThresholdPercent()) > 0;
 
-    Approval approval =
-            approvals
-                    .findByDiscountRequestId(request.getId())
-                    .orElse(null);
+        Approval approval =
+                approvals
+                        .findByDiscountRequestId(request.getId())
+                        .orElse(null);
 
-    return new ApprovalPathResponse(
-            quoteVersionId,
-            request.getId(),
-            request.getRequestedPercent(),
-            rule.getApprovalThresholdPercent(),
-            exceptionRequired,
-            rule.getRequiredApproverRole(),
-            request.getReason(),
-            request.getRequestedBy(),
-            request.getRequestedAt(),
+        return new ApprovalPathResponse(
+                quoteVersionId,
+                request.getId(),
+                request.getRequestedPercent(),
+                rule.getApprovalThresholdPercent(),
+                exceptionRequired,
+                rule.getRequiredApproverRole(),
+                request.getReason(),
+                request.getRequestedBy(),
+                request.getRequestedAt(),
 
-            approval == null ? null : approval.getId(),
-            approval == null ? "PENDING" : approval.getStatus(),
-            approval == null ? null : approval.getApprovedBy(),
-            approval == null ? null : approval.getApproverRole(),
-            approval == null ? null : approval.getApprovedAt(),
-            approval == null ? null : approval.getApprovalSource());
-}
+                approval == null ? null : approval.getId(),
+                approval == null ? "PENDING" : approval.getStatus(),
+                approval == null ? null : approval.getApprovedBy(),
+                approval == null ? null : approval.getApproverRole(),
+                approval == null ? null : approval.getApprovedAt(),
+                approval == null ? null : approval.getApprovalSource());
+    }
 
     @Transactional
     public void createGlobalHotelsApprovalPathIfMissing() {

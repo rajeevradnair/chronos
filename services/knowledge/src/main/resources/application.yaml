@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: chronos-knowledge
+
+  datasource:
+    url: jdbc:postgresql://${KNOWLEDGE_DB_HOST}:${KNOWLEDGE_DB_PORT:5432}/${KNOWLEDGE_DB_NAME:chronos_knowledge}
+    username: ${KNOWLEDGE_DB_USERNAME:chronos}
+    password: ${KNOWLEDGE_DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    open-in-view: false

@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: chronos-conversation
+
+  datasource:
+    url: jdbc:postgresql://${CONVERSATION_DB_HOST}:${CONVERSATION_DB_PORT:5432}/${CONVERSATION_DB_NAME:chronos_conversation}
+    username: ${CONVERSATION_DB_USERNAME:chronos}
+    password: ${CONVERSATION_DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    open-in-view: false

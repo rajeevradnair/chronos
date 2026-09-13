@@ -129,7 +129,7 @@ public class CpqApplication {
 
             quoteService.createGlobalHotelsQuoteHistoryIfMissing();
 
-                approvalService.createGlobalHotelsApprovalPathIfMissing();
+         approvalService.createGlobalHotelsApprovalPathIfMissing();
 
         };
     }

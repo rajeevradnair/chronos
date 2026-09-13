@@ -1,0 +1,5 @@
+/Users/rnair/projects/chronos/services/conversation/src/main/java/com/chronos/conversation/ConversationApplication.java
+/Users/rnair/projects/chronos/services/conversation/src/main/java/com/chronos/conversation/call/Call.java
+/Users/rnair/projects/chronos/services/conversation/src/main/java/com/chronos/conversation/call/CallRepository.java
+/Users/rnair/projects/chronos/services/conversation/src/main/java/com/chronos/conversation/call/Transcript.java
+/Users/rnair/projects/chronos/services/conversation/src/main/java/com/chronos/conversation/call/TranscriptRepository.java

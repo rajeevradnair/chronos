@@ -69,3 +69,38 @@ output "cpq_db_name" {
   description = "CPQ PostgreSQL database name"
   value       = aws_db_instance.cpq.db_name
 }
+
+# Conversation database
+
+output "conversation_db_endpoint" {
+  description = "Conversation PostgreSQL endpoint"
+  value       = aws_db_instance.conversation.address
+}
+
+output "conversation_db_port" {
+  description = "Conversation PostgreSQL port"
+  value       = aws_db_instance.conversation.port
+}
+
+output "conversation_db_name" {
+  description = "Conversation PostgreSQL database name"
+  value       = aws_db_instance.conversation.db_name
+}
+
+
+# Knowledge database
+
+output "knowledge_db_endpoint" {
+  description = "Knowledge PostgreSQL endpoint"
+  value       = aws_db_instance.knowledge.address
+}
+
+output "knowledge_db_port" {
+  description = "Knowledge PostgreSQL port"
+  value       = aws_db_instance.knowledge.port
+}
+
+output "knowledge_db_name" {
+  description = "Knowledge PostgreSQL database name"
+  value       = aws_db_instance.knowledge.db_name
+}

@@ -1,0 +1,10 @@
+/Users/rnair/projects/chronos/services/knowledge/src/main/java/com/chronos/knowledge/KnowledgeApplication.java
+/Users/rnair/projects/chronos/services/knowledge/src/main/java/com/chronos/knowledge/document/KnowledgeDocument.java
+/Users/rnair/projects/chronos/services/knowledge/src/main/java/com/chronos/knowledge/document/KnowledgeDocumentRepository.java
+/Users/rnair/projects/chronos/services/knowledge/src/main/java/com/chronos/knowledge/document/KnowledgeDocumentType.java
+/Users/rnair/projects/chronos/services/knowledge/src/main/java/com/chronos/knowledge/document/KnowledgeDocumentVersion.java
+/Users/rnair/projects/chronos/services/knowledge/src/main/java/com/chronos/knowledge/document/KnowledgeDocumentVersionRepository.java
+/Users/rnair/projects/chronos/services/knowledge/src/main/java/com/chronos/knowledge/policy/PricingPolicy.java
+/Users/rnair/projects/chronos/services/knowledge/src/main/java/com/chronos/knowledge/policy/PricingPolicyRepository.java
+/Users/rnair/projects/chronos/services/knowledge/src/main/java/com/chronos/knowledge/policy/PricingPolicyVersion.java
+/Users/rnair/projects/chronos/services/knowledge/src/main/java/com/chronos/knowledge/policy/PricingPolicyVersionRepository.java
