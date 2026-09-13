@@ -31,3 +31,15 @@ variable "knowledge_db_password" {
   type      = string
   sensitive = true
 }
+
+variable "support_db_password" {
+  description = "Master password for the Support PostgreSQL database"
+  type        = string
+  sensitive   = true
+}
+
+variable "email_db_password" {
+  description = "Master password for the Email PostgreSQL database"
+  type        = string
+  sensitive   = true
+}

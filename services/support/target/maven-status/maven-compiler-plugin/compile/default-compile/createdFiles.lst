@@ -1,0 +1,5 @@
+com/chronos/support/SupportApplication.class
+com/chronos/support/ticket/TicketEvent.class
+com/chronos/support/ticket/TicketRepository.class
+com/chronos/support/ticket/TicketEventRepository.class
+com/chronos/support/ticket/Ticket.class

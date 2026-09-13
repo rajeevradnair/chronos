@@ -13,6 +13,9 @@ ecr_repository_url = "280480953008.dkr.ecr.us-west-2.amazonaws.com/chronos-dev"
 eks_cluster_endpoint = "https://DD5BFE6938B9B6BC7BBD8291D105937D.gr7.us-west-2.eks.amazonaws.com"
 eks_cluster_name = "chronos-dev"
 eks_oidc_provider_arn = "arn:aws:iam::280480953008:oidc-provider/oidc.eks.us-west-2.amazonaws.com/id/DD5BFE6938B9B6BC7BBD8291D105937D"
+email_db_endpoint = "chronos-dev-email.cfcsmokk2cj0.us-west-2.rds.amazonaws.com"
+email_db_name = "chronos_email"
+email_db_port = 5432
 environment = "dev"
 knowledge_db_endpoint = "chronos-dev-knowledge.cfcsmokk2cj0.us-west-2.rds.amazonaws.com"
 knowledge_db_name = "chronos_knowledge"
@@ -25,6 +28,9 @@ public_subnet_ids = [
   "subnet-03cc3d601095b1311",
   "subnet-05c62bd9d12715e17",
 ]
+support_db_endpoint = "chronos-dev-support.cfcsmokk2cj0.us-west-2.rds.amazonaws.com"
+support_db_name = "chronos_support"
+support_db_port = 5432
 vpc_id = "vpc-0920a62b82dbf31f4"
 
 db passwords = ChronosDev123!
@@ -42,6 +48,8 @@ export TF_VAR_crm_db_password='ChronosDev123!'
 export TF_VAR_cpq_db_password='ChronosDev123!'
 export TF_VAR_conversation_db_password='ChronosDev123!'
 export TF_VAR_knowledge_db_password='ChronosDev123!'
+export TF_VAR_support_db_password='ChronosDev123!'
+export TF_VAR_email_db_password='ChronosDev123!'
 
 
 kubectl create secret generic chronos-conversation-db \
@@ -50,5 +58,15 @@ kubectl create secret generic chronos-conversation-db \
   --from-literal=CONVERSATION_DB_NAME='chronos_conversation' \
   --from-literal=CONVERSATION_DB_USERNAME='chronos' \
   --from-literal=CONVERSATION_DB_PASSWORD='ChronosDev123!' \
+  --dry-run=client \
+  -o yaml | kubectl apply -f -
+
+
+kubectl create secret generic chronos-knowledge-db \
+  --from-literal=KNOWLEDGE_DB_HOST='chronos-dev-knowledge.cfcsmokk2cj0.us-west-2.rds.amazonaws.com' \
+  --from-literal=KNOWLEDGE_DB_PORT='5432' \
+  --from-literal=KNOWLEDGE_DB_NAME='chronos_knowledge' \
+  --from-literal=KNOWLEDGE_DB_USERNAME='chronos' \
+  --from-literal=KNOWLEDGE_DB_PASSWORD='ChronosDev123!' \
   --dry-run=client \
   -o yaml | kubectl apply -f -

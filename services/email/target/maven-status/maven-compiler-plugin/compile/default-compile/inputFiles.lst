@@ -1,0 +1,5 @@
+/Users/rnair/projects/chronos/services/email/src/main/java/com/chronos/email/EmailApplication.java
+/Users/rnair/projects/chronos/services/email/src/main/java/com/chronos/email/message/EmailThread.java
+/Users/rnair/projects/chronos/services/email/src/main/java/com/chronos/email/message/EmailThreadRepository.java
+/Users/rnair/projects/chronos/services/email/src/main/java/com/chronos/email/message/Message.java
+/Users/rnair/projects/chronos/services/email/src/main/java/com/chronos/email/message/MessageRepository.java

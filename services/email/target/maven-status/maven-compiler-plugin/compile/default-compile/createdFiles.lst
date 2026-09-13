@@ -1,0 +1,5 @@
+com/chronos/email/message/MessageRepository.class
+com/chronos/email/message/EmailThread.class
+com/chronos/email/message/EmailThreadRepository.class
+com/chronos/email/EmailApplication.class
+com/chronos/email/message/Message.class

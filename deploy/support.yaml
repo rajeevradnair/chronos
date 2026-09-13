@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chronos-support
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: chronos-support
+
+  template:
+    metadata:
+      labels:
+        app: chronos-support
+
+    spec:
+      containers:
+        - name: support
+
+          image: 280480953008.dkr.ecr.us-west-2.amazonaws.com/chronos-dev:support-v1
+
+          ports:
+            - containerPort: 8080
+
+          envFrom:
+            - secretRef:
+                name: chronos-support-db
+
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chronos-support
+
+spec:
+  selector:
+    app: chronos-support
+
+  ports:
+    - port: 8080
+      targetPort: 8080
+
+  type: ClusterIP

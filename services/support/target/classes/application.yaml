@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: chronos-support
+
+  datasource:
+    url: jdbc:postgresql://${SUPPORT_DB_HOST}:${SUPPORT_DB_PORT:5432}/${SUPPORT_DB_NAME:chronos_support}
+    username: ${SUPPORT_DB_USERNAME:chronos}
+    password: ${SUPPORT_DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    open-in-view: false

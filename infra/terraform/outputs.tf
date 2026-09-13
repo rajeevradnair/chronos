@@ -104,3 +104,33 @@ output "knowledge_db_name" {
   description = "Knowledge PostgreSQL database name"
   value       = aws_db_instance.knowledge.db_name
 }
+
+output "support_db_endpoint" {
+  description = "Support PostgreSQL endpoint"
+  value       = aws_db_instance.support.address
+}
+
+output "support_db_port" {
+  description = "Support PostgreSQL port"
+  value       = aws_db_instance.support.port
+}
+
+output "support_db_name" {
+  description = "Support PostgreSQL database name"
+  value       = aws_db_instance.support.db_name
+}
+
+output "email_db_endpoint" {
+  description = "Email PostgreSQL endpoint"
+  value       = aws_db_instance.email.address
+}
+
+output "email_db_port" {
+  description = "Email PostgreSQL port"
+  value       = aws_db_instance.email.port
+}
+
+output "email_db_name" {
+  description = "Email PostgreSQL database name"
+  value       = aws_db_instance.email.db_name
+}

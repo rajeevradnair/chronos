@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: chronos-email
+
+  datasource:
+    url: jdbc:postgresql://${EMAIL_DB_HOST}:${EMAIL_DB_PORT:5432}/${EMAIL_DB_NAME:chronos_email}
+    username: ${EMAIL_DB_USERNAME:chronos}
+    password: ${EMAIL_DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    open-in-view: false

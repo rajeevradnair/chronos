@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.chronos.knowledge.KnowledgeApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.129 s -- in com.chronos.knowledge.KnowledgeApplicationTests
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.033 s -- in com.chronos.knowledge.KnowledgeApplicationTests
